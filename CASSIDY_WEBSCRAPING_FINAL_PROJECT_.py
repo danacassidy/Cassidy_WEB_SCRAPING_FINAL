@@ -52,7 +52,7 @@ filename = 'inmateinfo_dana_webscrapingproject_output.csv'
 
 column_headings = ['DC Number', 'Name', 'Race', "Sex", "Birth Date", "Inititial Receipt Date", "Current Facility",
                       "Current Custody", "Current Release Date", "Custody Status","Visiting Request Form - Part 1", 
-                   "Visiting Request Form - Part 2", "How to Apply for Visitation", "Detainer Information"]
+                   "Visiting Request Form - Part 2", "How to Apply for Visitation", "Detainer Information", "Additional Info"]
 
 csvfile = open(filename, 'w', newline='', encoding='utf-8')
 
@@ -73,13 +73,12 @@ def scrape_info(my_url):
     
     for cell in data:
         try:
-            if cell.find("a") in cell:
-                a_tag = cell.find("a")
-                href_link = a_tag.get('href')
+            if cell.find("href") in cell:
+                href_link = cell.get('href')
                 inmate.append(href_link)
                 
             else:
-                cleaned_inmate = cell.get_text()
+                cleaned_inmate = cell.get_text().strip()
                 inmate.append(cleaned_inmate)
         except:
             inmate.append("n/a")
