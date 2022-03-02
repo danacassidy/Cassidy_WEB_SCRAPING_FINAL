@@ -15,19 +15,19 @@ In the first CSV, this information includes an inmate's name DC#, race, gender, 
 
 
 ## How it was done:
-First, I collected all the partial URLs from each hyperlinked DC Number on the main page. This was fairly easy, as I initially found every table row on the main URL and then did a for loop to parse through the "a" tag and then the "href" tag within each. 
+First, I collected all the partial URLs from each hyperlinked DC Number on the main page. This was fairly easy, as I initially found every table row on the main URL and then did a for loop to find the "href" tag within each. 
 
-Because I had to find all of the desired table rows, there were some table rows that didn't consist of the data that I wanted, so I added a "try" and "except" to only collect the correct href links. If a row did not have the data I wanted, it would pass through the "except" and continue in our for loop. 
+Because I had to find all of the desired table rows, there were some rows that didn't consist of the data that I wanted, so I added a "try" and "except" to only collect the correct href links. If a row did not have the data I wanted, it would pass through the "except" and continue in our for loop. 
 
 We then run this with our URL listed at the top of the readme.md file.
 
-Next, I wanted to make a function to collect information about the inmates themselves. I would use each partial link to combine it with the static main link of the FDOC website to collect individual TD from an inamte's page. This information would be appended into a list. If a TD contained an "a" tag, then I would append the internal href link into that ongoing list, as these links are more useful than the actual text displayed for these cells about how to apply for visitation.
+Next, I wanted to make a function to collect information about the inmates themselves. I would use each partial link in combination with the main link to the FDOC website to collect individual TD from an inmate's page. This information is then appended to a list called "inmate". If a TD contains an "a" tag, then it appends the href link into the list instead of the text, as these links are more useful then the displayed text for that column.
 
-This was done in a "try" and "except" manner until every cell desired is collected. To make this function run, you have to open up the csv file, "inmateinfo_dana_webscrapingproject_output.csv", and create a csv.writer object, write the column headings rows, and then create a for loop to run through the collected hrefs for every partial link in the inmate_link list, which is the return output of the "scrape_links" function.
+This was done in a "try" and "except" manner until every cell is collected. To make this function run, you have to open up the csv file, "inmateinfo_dana_webscrapingproject_output.csv", and create a csv.writer object, write the column headings rows, and then use a for loop to run through the collected hrefs for every partial link in the inmate_link list.
 
-After I did this I essentially repeated the same steps (opening, writing the file and looping it through inmate_links) except this time I collected all the information on the offenses into a seperate csv called "offenseinfo_dana_webscrapingproject_output.csv."
+After this, I essentially repeated the same steps (opening and writing the file to loop the output of a function for each inmate page through inmate_links) except this time I collected all the information of the offenses inmates committed into a seperate csv called "offenseinfo_dana_webscrapingproject_output.csv."
 
-This new function for offenses is called "offense_scrape", and takes a person's DC number and puts it in a list to then insert into a csv row with their offense data. I did this by searching for the "td" tag in a seperate category of the individual inmate pages. Once all the "TD" is found, it is cleaned and appened to a list. Once all information is found, cleaned, and appended, it is written into the csv.
+This new function for offenses is called "offense_scrape", and takes a person's DC number and appends it to a list to then write into a csv row alongside their offense data. This ensures that each offense and the offense details can be linked to a proper inmate. Once all of the table data is found, it is cleaned and appened to a list and written into the csv.
 
 ## Unexpected problems:
 
