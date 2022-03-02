@@ -1,10 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
 
 # # Scraping Deathrow Inmates - Florida Department of Corrections
 # ### By: Dana Cassidy
-
-# In[80]:
 
 
 from urllib.request import urlopen
@@ -16,13 +12,9 @@ import csv
 import requests
 
 
-# In[81]:
-
 
 my_url = 'http://www.dc.state.fl.us/OffenderSearch/deathrowroster.aspx'
 
-
-# In[82]:
 
 
 res = requests.get(my_url)
@@ -52,13 +44,6 @@ for row in inmate_rows:
             continue
 
 
-# In[83]:
-
-
-print(len(inmate_links))
-
-
-# In[84]:
 
 
 ## setting everything up for our inmates' information
@@ -74,8 +59,6 @@ csvfile = open(filename, 'w', newline='', encoding='utf-8')
 c = csv.writer(csvfile)
 c.writerow(column_headings)
 
-
-# In[85]:
 
 
 ## function to scrape each inmates' information
@@ -104,16 +87,12 @@ def scrape_info(my_url):
     c.writerow(inmate)
 
 
-# In[86]:
-
 
 ## looping through our list return output of links to scrape each inmate's information
 
 for link in inmate_links:
     scrape_info(link)
 
-
-# In[87]:
 
 
 ## repeating the same process in the steps above except with the collection of offenses in mind.
@@ -130,8 +109,6 @@ csvfile = open(filename, 'w', newline='', encoding='utf-8')
 c = csv.writer(csvfile)
 c.writerow(offense_column_headings)
 
-
-# In[88]:
 
 
 ## scraping every offense listed for inmates. Each offense is paired with a DC Number that matches the correct inmate.
@@ -164,15 +141,10 @@ def offense_scrape(my_url):
             continue
 
 
-# In[89]:
-
-
 ## looping through our partial links to scrape the offenses information
 for link in inmate_links:
     offense_scrape(link)
 
-
-# In[ ]:
 
 
 
