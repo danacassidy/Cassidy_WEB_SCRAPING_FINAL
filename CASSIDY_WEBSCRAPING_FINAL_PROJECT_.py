@@ -52,7 +52,7 @@ filename = 'inmateinfo_dana_webscrapingproject_output.csv'
 
 column_headings = ['DC Number', 'Name', 'Race', "Sex", "Birth Date", "Inititial Receipt Date", "Current Facility",
                       "Current Custody", "Current Release Date", "Custody Status","Visiting Request Form - Part 1", 
-                   "Visiting Request Form - Part 2", "How to Apply for Visitation", "Detainer Information", "Additional Info"]
+                   "Visiting Request Form - Part 2", "How to Apply for Visitation", "Detainer Information"]
 
 csvfile = open(filename, 'w', newline='', encoding='utf-8')
 
