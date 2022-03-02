@@ -77,9 +77,6 @@ def scrape_info(my_url):
                 a_tag = cell.find("a")
                 href_link = a_tag.get('href')
                 inmate.append(href_link)
-            
-            elif cell.get_text == " " or  cell.get_text== "":    
-                inmate.append("n/a")
                 
             else:
                 cleaned_inmate = cell.get_text()
