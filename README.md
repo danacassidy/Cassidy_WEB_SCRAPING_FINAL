@@ -21,7 +21,7 @@ Because I had to find all of the desired table rows, there were some rows that d
 
 We then run this with our URL listed at the top of the readme.md file.
 
-Next, I wanted to make a function to collect information about the inmates themselves. I would use each partial link in combination with the main link to the FDOC website to collect individual TD from an inmate's page. This information is then appended to a list called "inmate". If a TD contains an "a" tag, then it appends the href link into the list instead of the text, as these links are more useful then the displayed text for that column.
+Next, I wanted to make a function to collect information about the inmates themselves. I would use each partial link in combination with the main link to the FDOC website to collect individual TD from an inmate's page. This information is then appended to a list called "inmate". 
 
 This was done in a "try" and "except" manner until every cell is collected. To make this function run, you have to open up the csv file, "inmateinfo_dana_webscrapingproject_output.csv", and create a csv.writer object, write the column headings rows, and then use a for loop to run through the collected hrefs for every partial link in the inmate_link list.
 
